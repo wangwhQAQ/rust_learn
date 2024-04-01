@@ -1,6 +1,6 @@
 use std::{io, cmp::Ordering};
 
-use rand::{Rng};
+use rand::Rng;
 
 fn main() {
     let random_num = rand::thread_rng().gen_range(0, 100);
