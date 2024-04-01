@@ -1,8 +1,21 @@
 fn main() {
-    mut_ref(); //可变引用与借用
+    // mut_ref(); //可变引用与借用
     // let reference_to_nothing = dangle(); // 悬垂指针
-    let reference_to_nothing = dangle_change(); // 悬垂指针_改
-    print!("{}", reference_to_nothing)
+    // let reference_to_nothing = dangle_change(); // 悬垂指针_改
+    // print!("{}", reference_to_nothing)
+
+    let r1 = Retangle{wideth:50, length: 80};
+    let r2 = Retangle{wideth:21, length: 480};
+    let r3 = Retangle{wideth:20, length: 20};
+
+    println!("{:#?}", r1);
+
+    println!("{}", r1.can_hold(&r2));
+
+    println!("{}", r1.can_hold(&r3));
+
+    println!("{}", r3.count_area());
+
 }
 
 
@@ -27,4 +40,21 @@ fn mut_ref () {
 fn dangle_change() -> String {
     let s = String::from("hello_悬垂指针_改");
     s
+}
+
+
+#[derive(Debug)]
+struct Retangle {
+    wideth: u32,
+    length: u32,
+}
+
+impl Retangle {
+    fn count_area(&self) -> u32 {
+        self.length * self.wideth
+    }
+
+    fn can_hold(&self, other :&Retangle) -> bool {
+        self.wideth > other.wideth && self.length > other.length
+    }
 }
