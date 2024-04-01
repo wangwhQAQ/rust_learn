@@ -5,16 +5,25 @@ fn main() {
     // print!("{}", reference_to_nothing)
 
     let r1 = Retangle{wideth:50, length: 80};
-    let r2 = Retangle{wideth:21, length: 480};
+    let r2 = Retangle{wideth:dbg!(21), length: 480};
     let r3 = Retangle{wideth:20, length: 20};
+    let r4 = Retangle{..r1};
 
     println!("{:#?}", r1);
+    println!("{:#?}", r4);
+
+    dbg!(&r1);
 
     println!("{}", r1.can_hold(&r2));
 
     println!("{}", r1.can_hold(&r3));
 
+    Retangle::test();
+
     println!("{}", r3.count_area());
+
+    
+    
 
 }
 
@@ -56,5 +65,9 @@ impl Retangle {
 
     fn can_hold(&self, other :&Retangle) -> bool {
         self.wideth > other.wideth && self.length > other.length
+    }
+
+    fn test() {
+        println!("test")
     }
 }
